@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+# MongoDB配置，连接我们本地的MongoDB，这就是我们的NoSQL数据库
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/industrial_ai_db
+      # 这里的industrial_ai_db是数据库的名字，会自动创建
+
+# LangChain4j 通义千问配置
+langchain4j:
+  community:
+    dashscope:
+      chat-model:
+        # 把这里换成你自己的API Key！
+        api-key: ${DASHSCOPE_API_KEY}
+        model-name: qwen-plus
+       # enable-search: true
+      embedding-model:
+        # 嵌入模型，用来把文本转成向量，RAG要用
+        api-key: ${DASHSCOPE_API_KEY}
+        model-name: text-embedding-v4
