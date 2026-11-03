@@ -233,6 +233,7 @@ industrial-ai-platform/
 ├── src/main/resources/
 │   ├── application.yml
 │   └── static/                          # 前端构建产物
+├── frontend/                            # 前端源码（Vue 3 + Vite）
 └── pom.xml
 ```
 
@@ -277,3 +278,23 @@ RAG 链路设计、文档切分与索引、对话编排、Prompt 约束设计，
 ## License
 
 仅用于学习与技术交流。
+
+---
+
+## 前端源码
+
+`frontend/` 是前端源码（Vue 3 + Vite + Element Plus）。
+
+`src/main/resources/static/` 里是**已构建的产物**——克隆后直接 `mvn spring-boot:run`
+就能看到完整页面，不需要装 Node。
+
+只有要改界面时才需要动前端：
+
+```bash
+cd frontend
+npm install
+npm run dev      # 开发服务器，默认 5173
+npm run build    # 构建，把 dist/ 的内容覆盖到 ../src/main/resources/static/
+```
+
+> 开发模式下前端跑在 5173、后端跑在 8080，跨域已经在 `CorsConfig` 里放开。
